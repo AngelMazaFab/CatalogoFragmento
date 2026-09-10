@@ -1,0 +1,4 @@
+- [x] Corregir errores en `FragmentLista.java`
+- [x] Implementar lógica de visualización en `FragmentoDetalle.java`
+- [x] Implementar comunicación en `MainActivity.java`
+- [x] Verificar compilación y funcionalidad
