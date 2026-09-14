@@ -1,34 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/fondo_claro"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/contenedorLista"
-        android:name="com.example.catalogofragmento.FragmentLista"
-        android:layout_width="381dp"
-        android:layout_height="321dp"
-        app:layout_constraintBottom_toTopOf="@+id/contenedorDetalle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/contenedorDetalle"
-        android:name="com.example.catalogofragmento.FragmentoDetalle"
-        android:layout_width="375dp"
-        android:layout_height="332dp"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/contenedorLista"
-        app:layout_constraintVertical_bias="0.5" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Encabezado fijo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="@color/superficie"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Catálogo"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                android:textColor="@color/azul_oscuro_ml" />
+
+            <EditText
+                android:id="@+id/etBuscador"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="10dp"
+                android:hint="Buscar artículo…"
+                android:drawableStart="@android:drawable/ic_menu_search"
+                android:drawablePadding="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:background="@color/fondo_claro"
+                android:textColor="@color/texto_principal"
+                android:textColorHint="@color/texto_secundario"
+                android:textSize="14sp"
+                android:inputType="text"
+                android:singleLine="true"
+                android:importantForAutofill="no" />
+
+            <Spinner
+                android:id="@+id/spCategorias"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/fondo_claro"
+                android:popupBackground="@color/superficie" />
+
+        </LinearLayout>
+
+        <!-- Fragment 1: Lista de artículos -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/contenedorLista"
+            android:name="com.example.catalogofragmento.FragmentLista"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_marginTop="8dp" />
+
+        <!-- Fragment 2: Detalle del artículo -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/contenedorDetalle"
+            android:name="com.example.catalogofragmento.FragmentoDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <!-- Fragment 3: Carrito -->
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/contenedorCarrito"
+            android:name="com.example.catalogofragmento.FragmentCarrito"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

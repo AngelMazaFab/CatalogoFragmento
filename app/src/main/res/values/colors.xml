@@ -2,4 +2,15 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta CatalogoFragmento — Modo Claro -->
+    <color name="amarillo_ml">#FFE600</color>
+    <color name="azul_ml">#3483FA</color>
+    <color name="azul_oscuro_ml">#2D3277</color>
+    <color name="fondo_claro">#F5F5F5</color>
+    <color name="superficie">#FFFFFF</color>
+    <color name="texto_principal">#333333</color>
+    <color name="texto_secundario">#666666</color>
+    <color name="verde_disponible">#00A650</color>
+    <color name="rojo_agotado">#E63946</color>
 </resources>

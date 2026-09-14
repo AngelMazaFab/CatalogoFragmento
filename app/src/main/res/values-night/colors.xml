@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta CatalogoFragmento — Modo Oscuro -->
+    <color name="amarillo_ml">#FFE600</color>
+    <color name="azul_ml">#5B9BFF</color>
+    <color name="azul_oscuro_ml">#8C9EFF</color>
+    <color name="fondo_claro">#121212</color>
+    <color name="superficie">#1E1E1E</color>
+    <color name="texto_principal">#F0F0F0</color>
+    <color name="texto_secundario">#AAAAAA</color>
+    <color name="verde_disponible">#4CD787</color>
+    <color name="rojo_agotado">#FF6B6B</color>
+</resources>

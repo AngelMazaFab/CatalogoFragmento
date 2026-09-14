@@ -1,52 +1,196 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp"
+    android:background="@color/fondo_claro"
     tools:context=".FragmentoDetalle">
 
-
-    <LinearLayout
+    <!-- Imagen con overlays de favorito y compartir -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="200dp"
+        android:background="@color/superficie">
 
         <ImageView
             android:id="@+id/imgArticulo"
-            android:layout_width="160dp"
-            android:layout_height="160dp" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:contentDescription="Imagen del artículo" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <ImageButton
+                android:id="@+id/btnFavorito"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/btn_star_big_off"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Favorito"
+                android:scaleType="centerInside" />
+
+            <ImageButton
+                android:id="@+id/btnCompartir"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_menu_share"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Compartir"
+                android:scaleType="centerInside"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- Chip de disponibilidad -->
+    <TextView
+        android:id="@+id/tvDisponibilidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disponible"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:background="@color/verde_disponible"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:layout_marginTop="10dp" />
+
+    <!-- Categoría -->
+    <TextView
+        android:id="@+id/tvCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/texto_secundario"
+        android:textSize="13sp"
+        android:layout_marginTop="6dp" />
+
+    <!-- Nombre -->
+    <TextView
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/texto_principal"
+        android:text="Selecciona un Artículo"
+        android:layout_marginTop="6dp" />
+
+    <!-- Marca -->
+    <TextView
+        android:id="@+id/tvMarca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/texto_secundario"
+        android:textSize="14sp"
+        android:layout_marginTop="2dp" />
+
+    <!-- Descripción -->
+    <TextView
+        android:id="@+id/txtDescripcion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aquí aparecerá la descripción"
+        android:textColor="@color/texto_secundario"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Precio unitario -->
+    <TextView
+        android:id="@+id/txtPrecio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Precio: $0.00"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/azul_ml"
+        android:layout_marginTop="10dp" />
+
+    <!-- Selector de cantidad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="12dp">
 
         <TextView
-            android:id="@+id/txtTituloDetalle"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Detalle del Articulo"
-            android:textSize="22sp"
-            android:textStyle="bold"/>
+            android:text="Cantidad:"
+            android:textSize="16sp"
+            android:textColor="@color/texto_principal" />
+
+        <Button
+            android:id="@+id/btnMenos"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="−"
+            android:textSize="18sp"
+            android:padding="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:layout_marginStart="12dp" />
 
         <TextView
-            android:id="@+id/txtNombre"
-            android:layout_width="match_parent"
+            android:id="@+id/tvCantidad"
+            android:layout_width="40dp"
             android:layout_height="wrap_content"
-            android:textSize="22sp"
+            android:gravity="center"
+            android:text="1"
+            android:textSize="18sp"
             android:textStyle="bold"
-            android:text="Selecciona un Articulo" />
+            android:textColor="@color/texto_principal" />
+
+        <Button
+            android:id="@+id/btnMas"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="+"
+            android:textSize="18sp"
+            android:padding="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp" />
 
         <TextView
-            android:id="@+id/txtDescripcion"
-            android:layout_width="match_parent"
+            android:id="@+id/tvPrecioTotal"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Aqui aparecera la descripción" />
-
-        <TextView
-            android:id="@+id/txtPrecio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Precio: $0.00"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Total: $0.00"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/azul_oscuro_ml" />
 
     </LinearLayout>
-</FrameLayout>
+
+    <!-- Botón Comprar -->
+    <Button
+        android:id="@+id/btnComprar"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comprar"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/azul_ml" />
+
+</LinearLayout>
