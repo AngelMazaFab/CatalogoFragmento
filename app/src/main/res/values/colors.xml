@@ -5,6 +5,7 @@
 
     <!-- Paleta CatalogoFragmento — Modo Claro -->
     <color name="amarillo_ml">#FFE600</color>
+    <color name="amarillo_favorito">#C98A00</color>
     <color name="azul_ml">#3483FA</color>
     <color name="azul_oscuro_ml">#2D3277</color>
     <color name="fondo_claro">#F5F5F5</color>

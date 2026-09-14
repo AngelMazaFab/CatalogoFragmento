@@ -46,4 +46,15 @@
         android:padding="8dp"
         android:background="@color/superficie" />
 
+    <Button
+        android:id="@+id/btnComprarCarrito"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:text="Comprar"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/azul_ml" />
+
 </LinearLayout>

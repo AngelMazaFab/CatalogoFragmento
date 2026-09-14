@@ -9,8 +9,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,6 +24,7 @@ public class FragmentCarrito extends Fragment implements CarritoAdapter.OnCarrit
 
     private ListView lvCarrito;
     private TextView tvTotalCarrito;
+    private Button btnComprarCarrito;
 
     private ArrayList<ItemCarrito> itemsCarrito;
     private CarritoAdapter adapter;
@@ -42,10 +45,22 @@ public class FragmentCarrito extends Fragment implements CarritoAdapter.OnCarrit
 
         lvCarrito = view.findViewById(R.id.lvCarrito);
         tvTotalCarrito = view.findViewById(R.id.tvTotalCarrito);
+        btnComprarCarrito = view.findViewById(R.id.btnComprarCarrito);
 
         itemsCarrito = new ArrayList<>();
         adapter = new CarritoAdapter(requireContext(), itemsCarrito, this);
         lvCarrito.setAdapter(adapter);
+
+        btnComprarCarrito.setOnClickListener(v -> {
+            if (itemsCarrito == null || itemsCarrito.isEmpty()) {
+                Toast.makeText(requireContext(), "No puedes comprar: el carrito está vacío", Toast.LENGTH_SHORT).show();
+            } else {
+                itemsCarrito.clear();
+                adapter.notifyDataSetChanged();
+                actualizarTotal();
+                Toast.makeText(requireContext(), "Compra Exitosa", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         actualizarTotal();
     }

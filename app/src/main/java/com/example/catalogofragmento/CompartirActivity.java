@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -21,6 +22,7 @@ public class CompartirActivity extends AppCompatActivity {
     private int imagen = 0;
     private String marca = "";
     private String categoria = "";
+    private boolean favorito = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class CompartirActivity extends AppCompatActivity {
             if (marca == null) marca = "";
             categoria = intent.getStringExtra("categoria");
             if (categoria == null) categoria = "";
+            favorito = intent.getBooleanExtra("favorito", false);
         }
 
         // Vincular vistas
@@ -63,6 +66,9 @@ public class CompartirActivity extends AppCompatActivity {
         tvCompartirNombre.setText(nombre);
         tvCompartirDescripcion.setText(descripcion);
         tvCompartirPrecio.setText(String.format("$%,.2f", precio));
+        if (favorito) {
+            tvCompartirPrecio.setTextColor(ContextCompat.getColor(this, R.color.amarillo_favorito));
+        }
         tvCompartirCategoria.setText(categoria.isEmpty() ? "General" : categoria);
         tvCompartirMarca.setText(marca.isEmpty() ? "Sin marca" : marca);
 

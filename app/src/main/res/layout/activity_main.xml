@@ -79,7 +79,7 @@
             android:id="@+id/contenedorCarrito"
             android:name="com.example.catalogofragmento.FragmentCarrito"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
+            android:layout_height="400dp"
             android:layout_marginTop="8dp" />
 
     </LinearLayout>

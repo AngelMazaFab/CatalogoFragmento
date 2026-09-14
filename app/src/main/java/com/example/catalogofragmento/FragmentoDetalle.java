@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -34,6 +35,7 @@ public class FragmentoDetalle extends Fragment {
     private int cantidadSeleccionada = 1;
 
     private OnArticuloCompradoListener listener;
+    private OnFavoritoCambiadoListener favoritoListener;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -55,11 +57,21 @@ public class FragmentoDetalle extends Fragment {
         void onArticuloComprado(Articulo articulo, int cantidad);
     }
 
+    /**
+     * Interfaz de callback para comunicar el cambio de favorito a MainActivity.
+     */
+    public interface OnFavoritoCambiadoListener {
+        void onFavoritoCambiado(Articulo articulo);
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof OnArticuloCompradoListener) {
             listener = (OnArticuloCompradoListener) context;
+        }
+        if (context instanceof OnFavoritoCambiadoListener) {
+            favoritoListener = (OnFavoritoCambiadoListener) context;
         }
     }
 
@@ -124,6 +136,14 @@ public class FragmentoDetalle extends Fragment {
             if (articuloActual != null) {
                 articuloActual.setFavorito(!articuloActual.isFavorito());
                 actualizarIconoFavorito();
+                actualizarColorPrecioFavorito();
+                if (favoritoListener != null) {
+                    favoritoListener.onFavoritoCambiado(articuloActual);
+                }
+                String msg = articuloActual.isFavorito() ? "Añadido a favoritos" : "Eliminado de favoritos";
+                Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(requireContext(), "Selecciona un artículo para marcarlo como favorito", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -131,49 +151,74 @@ public class FragmentoDetalle extends Fragment {
         btnCompartir.setOnClickListener(v -> {
             if (articuloActual != null) {
                 compartirArticulo();
+            } else {
+                Toast.makeText(requireContext(), "Selecciona un artículo para compartirlo", Toast.LENGTH_SHORT).show();
             }
         });
 
         // Selector de cantidad
         btnMenos.setOnClickListener(v -> {
-            if (articuloActual != null && cantidadSeleccionada > 1) {
+            if (articuloActual == null) {
+                Toast.makeText(requireContext(), "Selecciona un artículo primero", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (cantidadSeleccionada > 1) {
                 cantidadSeleccionada--;
                 actualizarCantidadYTotal();
+            } else {
+                Toast.makeText(requireContext(), "La cantidad mínima es 1", Toast.LENGTH_SHORT).show();
             }
         });
 
         btnMas.setOnClickListener(v -> {
-            if (articuloActual != null && cantidadSeleccionada < articuloActual.getExistencia()) {
+            if (articuloActual == null) {
+                Toast.makeText(requireContext(), "Selecciona un artículo primero", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (!articuloActual.isDisponible() || articuloActual.getExistencia() <= 0) {
+                Toast.makeText(requireContext(), "El artículo está agotado", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (cantidadSeleccionada < articuloActual.getExistencia()) {
                 cantidadSeleccionada++;
                 actualizarCantidadYTotal();
+            } else {
+                Toast.makeText(requireContext(), "No puedes seleccionar más de las " + articuloActual.getExistencia() + " unidades disponibles", Toast.LENGTH_SHORT).show();
             }
         });
 
         // Botón Comprar
         btnComprar.setOnClickListener(v -> {
-            if (articuloActual != null && articuloActual.isDisponible()) {
-                int cantidadComprada = cantidadSeleccionada;
+            if (articuloActual == null) {
+                Toast.makeText(requireContext(), "Selecciona un artículo antes de comprar", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (!articuloActual.isDisponible() || articuloActual.getExistencia() <= 0) {
+                Toast.makeText(requireContext(), "No se puede comprar: el artículo está agotado", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                // Descontar existencia
-                articuloActual.setExistencia(articuloActual.getExistencia() - cantidadComprada);
+            int cantidadComprada = cantidadSeleccionada;
 
-                // Notificar a MainActivity vía interfaz
-                if (listener != null) {
-                    listener.onArticuloComprado(articuloActual, cantidadComprada);
-                }
+            // Descontar existencia
+            articuloActual.setExistencia(articuloActual.getExistencia() - cantidadComprada);
 
-                Toast.makeText(requireContext(), "Agregado al carrito", Toast.LENGTH_SHORT).show();
+            // Notificar a MainActivity vía interfaz
+            if (listener != null) {
+                listener.onArticuloComprado(articuloActual, cantidadComprada);
+            }
 
-                // Resetear cantidad y actualizar vista
-                cantidadSeleccionada = 1;
-                actualizarCantidadYTotal();
-                actualizarDisponibilidad();
+            Toast.makeText(requireContext(), "Agregado al carrito (" + cantidadComprada + " unidad" + (cantidadComprada > 1 ? "es" : "") + ")", Toast.LENGTH_SHORT).show();
 
-                // Si se agotó, deshabilitar botón
-                if (!articuloActual.isDisponible()) {
-                    btnComprar.setEnabled(false);
-                    btnComprar.setText("Agotado");
-                }
+            // Resetear cantidad y actualizar vista
+            cantidadSeleccionada = 1;
+            actualizarCantidadYTotal();
+            actualizarDisponibilidad();
+
+            // Si se agotó, actualizar aspecto del botón
+            if (!articuloActual.isDisponible()) {
+                btnComprar.setText("Agotado");
+                btnComprar.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.rojo_agotado));
             }
         });
     }
@@ -192,16 +237,32 @@ public class FragmentoDetalle extends Fragment {
             tvMarca.setText("Marca: " + articulo.getMarca());
 
             actualizarIconoFavorito();
+            actualizarColorPrecioFavorito();
             actualizarDisponibilidad();
             actualizarCantidadYTotal();
 
-            // Habilitar/deshabilitar compra según disponibilidad
+            // Actualizar apariencia del botón según disponibilidad
             if (articulo.isDisponible()) {
-                btnComprar.setEnabled(true);
                 btnComprar.setText("Comprar");
+                btnComprar.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.azul_ml));
             } else {
-                btnComprar.setEnabled(false);
                 btnComprar.setText("Agotado");
+                btnComprar.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.rojo_agotado));
+            }
+        }
+    }
+
+    private void actualizarColorPrecioFavorito() {
+        if (articuloActual != null && txtPrecio != null && isAdded()) {
+            int color;
+            if (articuloActual.isFavorito()) {
+                color = ContextCompat.getColor(requireContext(), R.color.amarillo_favorito);
+            } else {
+                color = ContextCompat.getColor(requireContext(), R.color.azul_ml);
+            }
+            txtPrecio.setTextColor(color);
+            if (tvPrecioTotal != null) {
+                tvPrecioTotal.setTextColor(color);
             }
         }
     }
@@ -250,6 +311,7 @@ public class FragmentoDetalle extends Fragment {
         intent.putExtra("imagen", articuloActual.getImagen());
         intent.putExtra("marca", articuloActual.getMarca());
         intent.putExtra("categoria", articuloActual.getCategoria());
+        intent.putExtra("favorito", articuloActual.isFavorito());
         startActivity(intent);
     }
 }

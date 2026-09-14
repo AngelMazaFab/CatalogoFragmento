@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -78,6 +79,7 @@ public class CarritoAdapter extends BaseAdapter {
                 // Devolver toda la cantidad a existencia y quitar del carrito
                 articulo.setExistencia(articulo.getExistencia() + cantidadActual);
                 items.remove(position);
+                Toast.makeText(context, articulo.getNombre() + " eliminado del carrito", Toast.LENGTH_SHORT).show();
             } else {
                 item.setCantidad(cantidadActual - 1);
                 articulo.setExistencia(articulo.getExistencia() + 1);
@@ -96,6 +98,8 @@ public class CarritoAdapter extends BaseAdapter {
                 if (listener != null) {
                     listener.onCarritoCambiado();
                 }
+            } else {
+                Toast.makeText(context, "No hay más unidades en stock de " + articulo.getNombre(), Toast.LENGTH_SHORT).show();
             }
         });
 

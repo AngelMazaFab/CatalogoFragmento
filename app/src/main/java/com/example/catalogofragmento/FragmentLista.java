@@ -115,7 +115,7 @@ public class FragmentLista extends Fragment {
                 299,
                 R.drawable.mouse,
                 "Logitech",
-                15,
+                8,
                 "Accesorios"
         ));
 
@@ -125,7 +125,7 @@ public class FragmentLista extends Fragment {
                 1500,
                 R.drawable.teclado,
                 "HyperX",
-                10,
+                8,
                 "Accesorios"
         ));
 
@@ -135,7 +135,7 @@ public class FragmentLista extends Fragment {
                 5000,
                 R.drawable.monitor,
                 "Samsung",
-                5,
+                8,
                 "Computadoras"
         ));
 
@@ -145,7 +145,7 @@ public class FragmentLista extends Fragment {
                 1299,
                 R.drawable.audifonos,
                 "JBL",
-                3,
+                8,
                 "Audio"
         ));
 
@@ -155,7 +155,7 @@ public class FragmentLista extends Fragment {
                 500,
                 R.drawable.usb,
                 "Kingston",
-                20,
+                8,
                 "Almacenamiento"
         ));
 
@@ -185,9 +185,14 @@ public class FragmentLista extends Fragment {
         for (Articulo articulo : articulos) {
             boolean coincideTexto = texto == null || texto.isEmpty()
                     || articulo.getNombre().toLowerCase().contains(texto.toLowerCase());
-            boolean coincideCategoria = categoria == null || categoria.isEmpty()
-                    || categoria.equals("Todos")
-                    || articulo.getCategoria().equals(categoria);
+            boolean coincideCategoria;
+            if (categoria == null || categoria.isEmpty() || categoria.equalsIgnoreCase("Todos")) {
+                coincideCategoria = true;
+            } else if (categoria.equalsIgnoreCase("Favoritos")) {
+                coincideCategoria = articulo.isFavorito();
+            } else {
+                coincideCategoria = articulo.getCategoria().equalsIgnoreCase(categoria);
+            }
 
             if (coincideTexto && coincideCategoria) {
                 articulosFiltrados.add(articulo);

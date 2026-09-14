@@ -17,7 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity
         implements FragmentLista.OnArticuloSeleccionadoListener,
-                   FragmentoDetalle.OnArticuloCompradoListener {
+                   FragmentoDetalle.OnArticuloCompradoListener,
+                   FragmentoDetalle.OnFavoritoCambiadoListener {
 
     private EditText etBuscador;
     private Spinner spCategorias;
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity
 
         // Configurar spinner de categorías
         spCategorias = findViewById(R.id.spCategorias);
-        String[] categorias = {"Todos", "Computadoras", "Accesorios", "Audio", "Almacenamiento"};
+        String[] categorias = {"Todos", "Favoritos", "Computadoras", "Accesorios", "Audio", "Almacenamiento"};
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, categorias);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -99,5 +100,10 @@ public class MainActivity extends AppCompatActivity
         if (carritoFragment != null) {
             carritoFragment.agregarItem(articulo, cantidad);
         }
+    }
+
+    @Override
+    public void onFavoritoCambiado(Articulo articulo) {
+        aplicarFiltros();
     }
 }

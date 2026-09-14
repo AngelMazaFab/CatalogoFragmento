@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 
 public class ArticuloAdapter extends BaseAdapter {
@@ -62,6 +64,12 @@ public class ArticuloAdapter extends BaseAdapter {
         holder.imgArticulo.setImageResource(articulo.getImagen());
         holder.tvNombre.setText(articulo.getNombre());
         holder.tvPrecio.setText(String.format("$%,.2f", articulo.getPrecio()));
+
+        if (articulo.isFavorito()) {
+            holder.tvPrecio.setTextColor(ContextCompat.getColor(context, R.color.amarillo_favorito));
+        } else {
+            holder.tvPrecio.setTextColor(ContextCompat.getColor(context, R.color.azul_ml));
+        }
 
         return convertView;
     }
