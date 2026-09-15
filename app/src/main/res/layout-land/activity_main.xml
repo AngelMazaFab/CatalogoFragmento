@@ -8,14 +8,17 @@
     android:background="@color/fondo_claro"
     tools:context=".MainActivity">
 
-    <!-- Encabezado: título + buscador + spinner (ancho completo, arriba) -->
+    <!-- Encabezado azul oscuro: título + buscador + spinner en horizontal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp"
-        android:background="@color/superficie"
-        android:elevation="4dp">
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:background="@color/azul_header"
+        android:elevation="6dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -23,13 +26,13 @@
             android:text="Catálogo"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="@color/azul_oscuro_ml" />
+            android:textColor="@color/white" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="10dp">
 
             <EditText
                 android:id="@+id/etBuscador"
@@ -41,7 +44,7 @@
                 android:drawablePadding="8dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:background="@color/fondo_claro"
+                android:background="@drawable/bg_buscador"
                 android:textColor="@color/texto_principal"
                 android:textColorHint="@color/texto_secundario"
                 android:textSize="14sp"
@@ -53,10 +56,12 @@
                 android:id="@+id/spCategorias"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginStart="8dp"
-                android:background="@color/fondo_claro"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_spinner"
                 android:popupBackground="@color/superficie"
-                android:minWidth="140dp" />
+                android:minWidth="140dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp" />
 
         </LinearLayout>
 
@@ -68,7 +73,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:layout_marginTop="4dp">
+        android:layout_marginTop="6dp">
 
         <!-- Columna izquierda: Lista -->
         <androidx.core.widget.NestedScrollView
@@ -109,7 +114,7 @@
                     android:name="com.example.catalogofragmento.FragmentCarrito"
                     android:layout_width="match_parent"
                     android:layout_height="400dp"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="8dp" />
 
             </LinearLayout>
 

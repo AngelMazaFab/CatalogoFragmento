@@ -24,6 +24,7 @@ public class FragmentCarrito extends Fragment implements CarritoAdapter.OnCarrit
 
     private ListView lvCarrito;
     private TextView tvTotalCarrito;
+    private TextView tvBadgeCarrito;
     private Button btnComprarCarrito;
 
     private ArrayList<ItemCarrito> itemsCarrito;
@@ -45,6 +46,7 @@ public class FragmentCarrito extends Fragment implements CarritoAdapter.OnCarrit
 
         lvCarrito = view.findViewById(R.id.lvCarrito);
         tvTotalCarrito = view.findViewById(R.id.tvTotalCarrito);
+        tvBadgeCarrito = view.findViewById(R.id.tvBadgeCarrito);
         btnComprarCarrito = view.findViewById(R.id.btnComprarCarrito);
 
         itemsCarrito = new ArrayList<>();
@@ -93,9 +95,14 @@ public class FragmentCarrito extends Fragment implements CarritoAdapter.OnCarrit
 
     private void actualizarTotal() {
         double total = 0;
+        int totalItems = 0;
         for (ItemCarrito item : itemsCarrito) {
             total += item.getSubtotal();
+            totalItems += item.getCantidad();
         }
-        tvTotalCarrito.setText(String.format("Total del carrito: $%,.2f", total));
+        tvTotalCarrito.setText(String.format("$%,.2f", total));
+        if (tvBadgeCarrito != null) {
+            tvBadgeCarrito.setText(totalItems + " Item" + (totalItems != 1 ? "s" : ""));
+        }
     }
 }

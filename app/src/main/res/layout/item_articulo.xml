@@ -5,8 +5,13 @@
     android:orientation="horizontal"
     android:padding="12dp"
     android:gravity="center_vertical"
-    android:background="@color/superficie">
+    android:background="@drawable/bg_card_articulo"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp">
 
+    <!-- Imagen del artículo con fondo redondeado -->
     <ImageView
         android:id="@+id/imgItemArticulo"
         android:layout_width="60dp"
@@ -14,6 +19,7 @@
         android:scaleType="centerCrop"
         android:contentDescription="Imagen del artículo" />
 
+    <!-- Información central -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -26,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/texto_principal"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end" />
@@ -36,9 +42,26 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/azul_ml"
-            android:textSize="14sp"
+            android:textSize="15sp"
+            android:textStyle="bold"
             android:layout_marginTop="4dp" />
 
     </LinearLayout>
+
+    <!-- Chip "Stock" a la derecha -->
+    <TextView
+        android:id="@+id/tvItemStock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stock"
+        android:textColor="@color/white"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        android:background="@drawable/bg_chip_stock"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_marginStart="8dp" />
 
 </LinearLayout>

@@ -1,19 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/fondo_claro"
     tools:context=".FragmentLista">
+
+    <!-- Encabezado de sección "Lista de Artículos" -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@color/fondo_claro">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="☰  Lista de Artículos"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/texto_principal" />
+
+        <TextView
+            android:id="@+id/tvContadorLista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 Disponibles"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/bg_badge"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/listaArticulos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:nestedScrollingEnabled="true"
-        android:padding="8dp"
+        android:padding="4dp"
         android:divider="@color/fondo_claro"
-        android:dividerHeight="4dp"
+        android:dividerHeight="0dp"
         android:clipToPadding="false" />
 
-</FrameLayout>
+</LinearLayout>

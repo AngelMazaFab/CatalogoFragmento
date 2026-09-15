@@ -13,14 +13,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Encabezado fijo -->
+        <!-- Encabezado azul oscuro -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@color/superficie"
-            android:elevation="4dp">
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            android:background="@color/azul_header"
+            android:elevation="6dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -28,19 +31,20 @@
                 android:text="Catálogo"
                 android:textSize="26sp"
                 android:textStyle="bold"
-                android:textColor="@color/azul_oscuro_ml" />
+                android:textColor="@color/white" />
 
+            <!-- Buscador con bordes redondeados -->
             <EditText
                 android:id="@+id/etBuscador"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="12dp"
                 android:hint="Buscar artículo…"
                 android:drawableStart="@android:drawable/ic_menu_search"
                 android:drawablePadding="8dp"
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:background="@color/fondo_claro"
+                android:background="@drawable/bg_buscador"
                 android:textColor="@color/texto_principal"
                 android:textColorHint="@color/texto_secundario"
                 android:textSize="14sp"
@@ -48,13 +52,16 @@
                 android:singleLine="true"
                 android:importantForAutofill="no" />
 
+            <!-- Spinner con bordes redondeados -->
             <Spinner
                 android:id="@+id/spCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/fondo_claro"
-                android:popupBackground="@color/superficie" />
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_spinner"
+                android:popupBackground="@color/superficie"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
 
         </LinearLayout>
 
@@ -64,7 +71,7 @@
             android:name="com.example.catalogofragmento.FragmentLista"
             android:layout_width="match_parent"
             android:layout_height="320dp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="10dp" />
 
         <!-- Fragment 2: Detalle del artículo -->
         <androidx.fragment.app.FragmentContainerView

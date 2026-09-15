@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class FragmentLista extends Fragment {
 
     private ListView listaArticulos;
+    private android.widget.TextView tvContadorLista;
 
     private ArrayList<Articulo> articulos;
     private ArrayList<Articulo> articulosFiltrados;
@@ -92,6 +93,7 @@ public class FragmentLista extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         listaArticulos = view.findViewById(R.id.listaArticulos);
+        tvContadorLista = view.findViewById(R.id.tvContadorLista);
         crearArticulos();
         mostrarArticulos();
     }
@@ -287,6 +289,7 @@ public class FragmentLista extends Fragment {
     private void mostrarArticulos(){
         adapter = new ArticuloAdapter(requireContext(), articulosFiltrados);
         listaArticulos.setAdapter(adapter);
+        actualizarContador();
 
         listaArticulos.setOnItemClickListener((parent, view, position, id) -> {
             Articulo articuloSeleccionado = adapter.getItem(position);
@@ -322,5 +325,13 @@ public class FragmentLista extends Fragment {
         }
 
         adapter.actualizarLista(articulosFiltrados);
+        actualizarContador();
+    }
+
+    private void actualizarContador() {
+        if (tvContadorLista != null) {
+            int count = articulosFiltrados.size();
+            tvContadorLista.setText(count + " Disponible" + (count != 1 ? "s" : ""));
+        }
     }
 }

@@ -55,6 +55,7 @@ public class ArticuloAdapter extends BaseAdapter {
             holder.imgArticulo = convertView.findViewById(R.id.imgItemArticulo);
             holder.tvNombre = convertView.findViewById(R.id.tvItemNombre);
             holder.tvPrecio = convertView.findViewById(R.id.tvItemPrecio);
+            holder.tvStock = convertView.findViewById(R.id.tvItemStock);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -71,6 +72,22 @@ public class ArticuloAdapter extends BaseAdapter {
             holder.tvPrecio.setTextColor(ContextCompat.getColor(context, R.color.azul_ml));
         }
 
+        // Chip de stock
+        if (holder.tvStock != null) {
+            if (articulo.isDisponible()) {
+                holder.tvStock.setText("Stock");
+                holder.tvStock.setBackgroundResource(R.drawable.bg_chip_stock);
+                holder.tvStock.setTextColor(ContextCompat.getColor(context, R.color.white));
+            } else {
+                holder.tvStock.setText("Agotado");
+                holder.tvStock.setBackgroundResource(R.drawable.bg_chip_stock);
+                holder.tvStock.setBackgroundTintList(
+                    android.content.res.ColorStateList.valueOf(
+                        ContextCompat.getColor(context, R.color.rojo_agotado)));
+                holder.tvStock.setTextColor(ContextCompat.getColor(context, R.color.white));
+            }
+        }
+
         return convertView;
     }
 
@@ -78,5 +95,6 @@ public class ArticuloAdapter extends BaseAdapter {
         ImageView imgArticulo;
         TextView tvNombre;
         TextView tvPrecio;
+        TextView tvStock;
     }
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.CatalogoFragmento" parent="Theme.Material3.DayNight.NoActionBar">
@@ -10,4 +11,18 @@
     </style>
 
     <style name="Theme.CatalogoFragmento" parent="Base.Theme.CatalogoFragmento" />
+
+    <!-- Estilo de botón primario personalizado -->
+    <style name="Widget.App.Button.Primary" parent="Widget.Material3.Button">
+        <item name="backgroundTint">@color/azul_oscuro_ml</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
+    <!-- Estilo de botón tonal personalizado -->
+    <style name="Widget.App.Button.Tonal" parent="Widget.Material3.Button.TonalButton">
+        <item name="backgroundTint">@color/azul_tonal</item>
+        <item name="android:textColor">@color/azul_ml</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
 </resources>

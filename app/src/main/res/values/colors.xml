@@ -6,12 +6,17 @@
     <!-- Paleta CatalogoFragmento — Modo Claro -->
     <color name="amarillo_ml">#FFE600</color>
     <color name="amarillo_favorito">#C98A00</color>
-    <color name="azul_ml">#3483FA</color>
-    <color name="azul_oscuro_ml">#2D3277</color>
-    <color name="fondo_claro">#F5F5F5</color>
+    <color name="azul_ml">#1565C0</color>
+    <color name="azul_oscuro_ml">#0D2B6E</color>
+    <color name="azul_header">#0D2B6E</color>
+    <color name="azul_tonal">#E3EBF8</color>
+    <color name="fondo_claro">#F2F4F8</color>
     <color name="superficie">#FFFFFF</color>
-    <color name="texto_principal">#333333</color>
-    <color name="texto_secundario">#666666</color>
+    <color name="borde_card">#DDE3EE</color>
+    <color name="texto_principal">#1A1F36</color>
+    <color name="texto_secundario">#6B7694</color>
     <color name="verde_disponible">#00A650</color>
     <color name="rojo_agotado">#E63946</color>
+    <color name="fondo_resumen">#F0F4FC</color>
+    <color name="precio_color">#1565C0</color>
 </resources>

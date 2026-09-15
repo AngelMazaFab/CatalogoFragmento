@@ -230,7 +230,7 @@ public class FragmentoDetalle extends Fragment {
 
             txtNombre.setText(articulo.getNombre());
             txtDescripcion.setText(articulo.getDescripcion());
-            txtPrecio.setText(String.format("Precio: $%,.2f", articulo.getPrecio()));
+            txtPrecio.setText(String.format("$%,.2f", articulo.getPrecio()));
             imgArticulo.setImageResource(articulo.getImagen());
 
             tvCategoria.setText("Categoría: " + articulo.getCategoria());
@@ -243,7 +243,7 @@ public class FragmentoDetalle extends Fragment {
 
             // Actualizar apariencia del botón según disponibilidad
             if (articulo.isDisponible()) {
-                btnComprar.setText("Comprar");
+                btnComprar.setText("Agregar al Carrito");
                 btnComprar.setBackgroundTintList(ContextCompat.getColorStateList(requireContext(), R.color.azul_ml));
             } else {
                 btnComprar.setText("Agotado");
