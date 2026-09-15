@@ -100,7 +100,7 @@ public class FragmentLista extends Fragment {
         articulos = new ArrayList<>();
 
         articulos.add(new Articulo(
-                "Laptop",
+                "Dell Laptop",
                 "Laptop 15.6 pulgadas 8GB RAM, SSD 512GB, procesador Intel Core i5",
                 13999,
                 R.drawable.laptop,
@@ -110,7 +110,27 @@ public class FragmentLista extends Fragment {
         ));
 
         articulos.add(new Articulo(
-                "Mouse inalámbrico",
+                " HP Laptop B0CP3LA",
+                "Laptop 15.6 1366x768 HD, AMD Ryzen 7 7730U, 16GB, 512GB SSD, Windows 11 Home",
+                14700,
+                R.drawable.laptop02,
+                "HP",
+                7,
+                "Computadoras"
+        ));
+
+        articulos.add(new Articulo(
+                "Coolby Laptop Windows",
+                "Laptop Windows de 15.6 pulgadas, 8 GB de RAM DDR4 256 GB M.2 SSD, computadoras portátiles Intel J4115Quad-Core, 1080P IPS Windows10 Pro PC",
+                18000,
+                R.drawable.laptop03,
+                "Coolby",
+                13,
+                "Computadoras"
+        ));
+
+        articulos.add(new Articulo(
+                " Logitech Mouse inalámbrico",
                 "Mouse ergonómico con conexión Bluetooth 5.0 y receptor USB",
                 299,
                 R.drawable.mouse,
@@ -120,7 +140,27 @@ public class FragmentLista extends Fragment {
         ));
 
         articulos.add(new Articulo(
-                "Teclado Mecánico",
+                "Multi Mouse alámbrico",
+                "Mouse alámbrico | Multi | USB, 1200dpi",
+                179,
+                R.drawable.mouse02,
+                "Multi",
+                29,
+                "Accesorios"
+        ));
+
+        articulos.add(new Articulo(
+                "Xiaomi Mouse Inalámbrico",
+                "Mouse Inalámbrico Xiaomi Wireless Mouse Lite 2 White",
+                169,
+                R.drawable.mouse03,
+                "Xioami",
+                19,
+                "Accesorios"
+        ));
+
+        articulos.add(new Articulo(
+                "HyperX Teclado Mecánico",
                 "Teclado mecánico RGB con switches Cherry MX, retroiluminado",
                 1500,
                 R.drawable.teclado,
@@ -130,7 +170,27 @@ public class FragmentLista extends Fragment {
         ));
 
         articulos.add(new Articulo(
-                "Monitor",
+                "Genérico Teclado de juegos",
+                "Teclado de juegos membrana con 61 teclas retroiluminación RGB cool cable cableado separado diseño simple y compacto",
+                382,
+                R.drawable.teclado02,
+                "Genérica",
+                500,
+                "Accesorios"
+        ));
+
+        articulos.add(new Articulo(
+                "Logitech Media Teclado",
+                "Logitech Media Teclado Elite- Negro (967559 – 0403)",
+                2601,
+                R.drawable.teclado03,
+                "Logitech",
+                10,
+                "Accesorios"
+        ));
+
+        articulos.add(new Articulo(
+                "Samsung Monitor",
                 "Monitor LED 32 pulgadas Full HD 4K, 60Hz, panel IPS",
                 5000,
                 R.drawable.monitor,
@@ -140,7 +200,27 @@ public class FragmentLista extends Fragment {
         ));
 
         articulos.add(new Articulo(
-                "Audifonos Bluetooth",
+                "Samsung Monitor Curvo",
+                "Monitor Curvo Samsung Essential S3 LCD 27, 1920x1080 Full HD, 60Hz, HDMI, Negro",
+                3028,
+                R.drawable.monitor02,
+                "Samsung",
+                5,
+                "Computadoras"
+        ));
+
+        articulos.add(new Articulo(
+                "KUAI Monitor LED",
+                "Monitor LED OEM 24 27 32 Pulgadas Monitores de Juego para PC IPS 75Hz 144Hz 165Hz 1ms Pantalla de Computadora LED de Alta Definición 24 Pulgadas",
+                3028,
+                R.drawable.monitor03,
+                "KUAI",
+                14,
+                "Computadoras"
+        ));
+
+        articulos.add(new Articulo(
+                "JBL Audifonos Bluetooth",
                 "Audífonos inalámbricos con cancelación de ruido activa",
                 1299,
                 R.drawable.audifonos,
@@ -150,7 +230,27 @@ public class FragmentLista extends Fragment {
         ));
 
         articulos.add(new Articulo(
-                "Memoria USB",
+                "Sony Audífonos inalámbricos WH-CH520",
+                "Adapta el sonido a tus preferencias personales con la app Sony",
+                689,
+                R.drawable.audifonos02,
+                "Sony",
+                20,
+                "Audio"
+        ));
+
+        articulos.add(new Articulo(
+                "Gabba Goods Audifonos Platinum Vibe",
+                "Botones de control de volumen",
+                450,
+                R.drawable.audifonos03,
+                "Gabba Goods",
+                10,
+                "Audio"
+        ));
+
+        articulos.add(new Articulo(
+                "Kingston Memoria USB",
                 "Memoria USB 3.0 de 128GB, velocidad de lectura 150MB/s",
                 500,
                 R.drawable.usb,
@@ -158,6 +258,28 @@ public class FragmentLista extends Fragment {
                 8,
                 "Almacenamiento"
         ));
+
+        articulos.add(new Articulo(
+                "Adata Memoria USB",
+                "Memoria USB Adata 64GB Metalica 3.2 UV350",
+                299,
+                R.drawable.usb02,
+                "Adata",
+                30,
+                "Almacenamiento"
+        ));
+
+        articulos.add(new Articulo(
+                "Sandisk Pen Drive",
+                "Pen Drive Sandisk Crayola USB-C de 64 GB con memoria de datos portátil, azul",
+                691,
+                R.drawable.usb03,
+                "Sandisk",
+                1,
+                "Almacenamiento"
+        ));
+
+
 
         articulosFiltrados = new ArrayList<>(articulos);
     }

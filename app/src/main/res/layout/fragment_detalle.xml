@@ -184,11 +184,11 @@
 
     <!-- Botón Comprar -->
     <Button
-        android:id="@+id/btnComprar"
+        android:id="@+id/btnAgregarCarrito"
         style="@style/Widget.Material3.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comprar"
+        android:text="Agregar al Carrito"
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/azul_ml" />

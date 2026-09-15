@@ -11,16 +11,6 @@ public class Articulo implements java.io.Serializable {
     private String categoria;    // "Computadoras", "Accesorios", "Audio", "Almacenamiento"
     private boolean favorito;    // estado del botón ⭐, inicia en false
 
-    public Articulo(String nombre, String descripcion, double precio, int imagen) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.imagen = imagen;
-        this.marca = "";
-        this.existencia = 0;
-        this.categoria = "";
-        this.favorito = false;
-    }
 
     public Articulo(String nombre, String descripcion, double precio, int imagen,
                     String marca, int existencia, String categoria) {

@@ -129,7 +129,7 @@ public class FragmentoDetalle extends Fragment {
         tvCantidad = view.findViewById(R.id.tvCantidad);
         btnMenos = view.findViewById(R.id.btnMenos);
         btnMas = view.findViewById(R.id.btnMas);
-        btnComprar = view.findViewById(R.id.btnComprar);
+        btnComprar = view.findViewById(R.id.btnAgregarCarrito);
 
         // Favorito toggle
         btnFavorito.setOnClickListener(v -> {
