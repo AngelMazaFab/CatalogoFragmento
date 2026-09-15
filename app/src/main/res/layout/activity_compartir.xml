@@ -86,7 +86,7 @@
                         android:text="Categoría"
                         android:textSize="12sp"
                         android:textStyle="bold"
-                        android:textColor="@color/azul_ml"
+                        android:textColor="@color/white"
                         android:background="@drawable/bg_badge"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
